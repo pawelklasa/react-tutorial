@@ -45,7 +45,6 @@ class App extends Component {
     return (
       <div className="container">
         <TodoInput></TodoInput>
-        <Button></Button>
         <hr/>
         <h4>Todo count: <span className="badge badge-secondary">{this.state.todos.length}</span></h4>
         <ul className="lost-group">
@@ -84,8 +83,9 @@ class TodoInput extends Component {
         <div>
           <h4>Add New Todo</h4>
           <form className="form-horizontal" onSubmit={this.handleSubmit}>
+
             <div className="form-group">
-              <label htmlFor="inputTodoTitle" className="col-sm-2 control-label"></label>
+              <label htmlFor="inputTodoTitle" className="col-sm-2 control-label">Todo</label>
               <div className="col-sm-10">
                 <input name="todoTitle"
                        type="text"
@@ -96,6 +96,55 @@ class TodoInput extends Component {
                        placeholder="Title"></input>
               </div>
             </div>
+
+              <div className="form-group">
+                <label htmlFor="inputTodoResposible" className="col-sm-2 control-label">Responsible</label>
+                <div className="col-sm-10">
+                  <input name="todoResponsible"
+                         type="text"
+                         className="form-control"
+                         id="inputTodoResponsible"
+                         value={this.state.todoResponsible}
+                         onChange={this.handleInputChange}
+                         placeholder="Responsible"></input>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="inputTodoDesc" className="col-sm-2 control-label">Description</label>
+                <div className="col-sm-10">
+                  <textarea name="todoDescription"
+                         className="form-control"
+                         rows="3"
+                         id="inputTodoDescription"
+                         value={this.state.todoDescription}
+                         onChange={this.handleInputChange}></textarea>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="inputTodoPriority" className="col-sm-2 control-label">Priority</label>
+                <div className="col-sm-10">
+                  <select name="todoPriority"
+                         className="form-control"
+                         id="inputTodoPriority"
+                         value={this.state.todoPriority}
+                         onChange={this.handleInputChange}>
+                           <option>Lowest</option>
+                           <option>Low</option>
+                           <option>Medium</option>
+                           <option>High</option>
+                           <option>Highest</option>
+                         </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <div className="col-sm-offset-2 col-sm-10">
+                  <button type="submit" className="btn btn-success">Add Todo</button>
+                </div>
+              </div>
+
           </form>
         </div>
       );
@@ -103,15 +152,13 @@ class TodoInput extends Component {
 
 }
 
-class Button extends Component {
-  render() {
-    return (
-      <div className="container">
-        <button className="btn btn-success">Submit</button>
-      </div>
-
-    );
-  }
-}
+// class Button extends Component {
+//   render() {
+//     return (
+//
+//
+//     );
+//   }
+// }
 
 export default App;
